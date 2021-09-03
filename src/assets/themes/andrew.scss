@@ -1,0 +1,17 @@
+/*
+ * simple color adjustments on the default theme
+ */
+
+body #app.theme-andrew {
+    .card {
+        a {
+            color: #4acaa8;
+        }
+
+        a:hover {
+            color: #ffdd55;
+        }
+    }
+
+}
+
