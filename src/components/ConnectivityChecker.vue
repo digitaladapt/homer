@@ -1,6 +1,6 @@
 <template>
   <div v-if="offline" class="offline-message">
-    <i class="far fa-dizzy"></i>
+    <i class="fas fa-dizzy"></i>
     <h1>
       You're offline friend.
       <span @click="checkOffline"> <i class="fas fa-redo-alt"></i></span>
