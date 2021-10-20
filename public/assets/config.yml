@@ -226,6 +226,11 @@ services:
   - name: "Crypto"
     icon: "fab fa-bitcoin"
     items:
+      - name: "Loop Markets"
+        logo: "/assets/logos/loop.png"
+        subtitle: "Terra"
+        tag: "crypto"
+        url: "https://www.loop.markets/community/"
       - name: "Anchor Protocol"
         logo: "/assets/logos/anchor-protocol.png"
         #icon: "fas fa-anchor"
