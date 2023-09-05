@@ -31,8 +31,10 @@ within Homer:
   - [Speedtest Tracker](#SpeedtestTracker)
   - [What's Up Docker](#whats-up-docker)
   - [SABnzbd](#sabnzbd)
-  - [OctoPrint](#sabnzbd)
+  - [OctoPrint](#octoprint)
   - [Tdarr](#tdarr)
+  - [PiAlert](#pialert)
+  - [Immich](#immich)
 
 If you experiencing any issue, please have a look to the [troubleshooting](troubleshooting.md) page.
 
@@ -96,9 +98,10 @@ Two lines are needed in the config.yml :
 The url must be the root url of Medusa application.
 The Medusa API key can be found in General configuration > Interface. It is needed to access Medusa API.
 
-## Lidarr, Prowlarr, Sonarr and Radarr
+## Lidarr, Prowlarr, Sonarr, Readarr and Radarr
 
-This service displays Activity (blue), Warning (orange) or Error (red) notifications bubbles from the Lidarr, Radarr or Sonarr application.
+This service displays Activity (blue), Warning (orange) or Error (red) notifications bubbles from the Lidarr, Readarr, Radarr or Sonarr application.
+Readarr display also a Missing (purple) notification bubbles.
 Two lines are needed in the config.yml :
 
 ```yaml
@@ -106,8 +109,8 @@ Two lines are needed in the config.yml :
   apikey: "<---insert-api-key-here--->"
 ```
 
-The url must be the root url of Lidarr, Prowlarr, Radarr or Sonarr application.
-The Lidarr, Prowlarr, Radarr or Sonarr API key can be found in Settings > General. It is needed to access the API.
+The url must be the root url of Lidarr, Prowlarr, Readarr, Radarr or Sonarr application.
+The Lidarr, Prowlarr, Readarr, Radarr or Sonarr API key can be found in Settings > General. It is needed to access the API.
 If you are using an older version of Radarr or Sonarr which don't support the new V3 api endpoints, add the following line to your service config "legacyApi: true", example:
 
 ```yaml
@@ -384,15 +387,17 @@ the "Config" > "General" section of the SABnzbd config in the SABnzbd web UI.
   downloadInterval: 5000 # (Optional) Interval (in ms) for updating the download count
 ```
 
-## OctoPrint
+## OctoPrint/Moonraker
 
-The OctoPrint service only needs an `apikey` & `url` and optionally a `display` option.
+The OctoPrint/Moonraker service only needs an `apikey` & `endpoint` and optionally a `display` or `url` option. `url` can be used when you click on the service it will launch the `url`
+
+Moonraker's API mimmicks a few of OctoPrint's endpoints which makes these services compatible. See https://moonraker.readthedocs.io/en/latest/web_api/#octoprint-api-emulation for details.
 
 ```yaml
 - name: "Octoprint"
   logo: "https://cdn-icons-png.flaticon.com/512/3112/3112529.png"
-  apikey: "xxxxxxxxxxxx" # insert your own API key here. Request one from https://openweathermap.org/api.
-  url: "http://192.168.0.151:8080"
+  apikey: "xxxxxxxxxxxx" # insert your own API key here.
+  endpoint: "http://192.168.0.151:8080"
   display: "text" # 'text' or 'bar'. Default to `text`.
   type: "OctoPrint"
 ```
@@ -408,4 +413,25 @@ for transcoding on your Tdarr instance as well as the number of errored items.
   url: "http://192.168.0.151:8265"
   type: "Tdarr"
   checkInterval: 5000 # (Optional) Interval (in ms) for updating the queue & error counts
+```
+
+## PiAlert
+
+The PiAlert service displays stats from your PiAlert server.
+
+```yaml
+- name: "PiAlert"
+  type: "PiAlert"
+  updateInterval: 5000 # (Optional) Interval (in ms) for updating the stats
+```
+
+## Immich
+
+The Immich service displays stats from your Immich server.
+
+```yaml
+- name: "Immich"
+  type: "Immich"
+  apikey: "<--- Your api key --->" # administrator user
+  updateInterval: 5000 # (Optional) Interval (in ms) for updating the stats
 ```
