@@ -1,4 +1,5 @@
 #!/bin/bash
 
-rsync --archive --progress --delete ./dist/ static-server:/var/www/home
+location=`dirname "$0"`
+rsync --archive --progress --delete "${location}/dist/" static-server:/var/www/home
 
