@@ -44,7 +44,7 @@ colors:
 
 # Optional message
 message:
-  url: "https://status.digitaladapt.com/motd.php"
+  url: "https://cyber.digitaladapt.com/motd.php"
 #  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
 #  title: "Demo !"
 #  icon: "fa fa-grin"
