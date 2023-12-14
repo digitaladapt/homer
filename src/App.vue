@@ -50,7 +50,7 @@
         <SearchInput
           class="navbar-item is-inline-block-mobile"
           :hotkey="searchHotkey()"
-          @input="filterServices($event.target?.value)"
+          @input="filterServices($event)"
           @search-focus="showMenu = true"
           @search-open="navigateToFirstService($event?.target?.value)"
           @search-cancel="filterServices()"
@@ -208,7 +208,7 @@ export default {
 
         if (this.currentPage !== "default") {
           let pageConfig = await this.getConfig(
-            `assets/${this.currentPage}.yml`
+            `assets/${this.currentPage}.yml`,
           );
           config = Object.assign(config, pageConfig);
         }
@@ -245,7 +245,7 @@ export default {
         return response
           .text()
           .then((body) => {
-            return parse(body);
+            return parse(body, { merge: true });
           })
           .then(function (config) {
             if (config.externalConfig) {
@@ -283,9 +283,11 @@ export default {
 
       const searchResultItems = [];
       for (const group of this.config.services) {
-        for (const item of group.items) {
-          if (this.matchesFilter(item)) {
-            searchResultItems.push(item);
+        if (group.items !== null) {
+          for (const item of group.items) {
+            if (this.matchesFilter(item)) {
+              searchResultItems.push(item);
+            }
           }
         }
       }
