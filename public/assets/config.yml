@@ -44,7 +44,7 @@ colors:
 
 # Optional message
 message:
-  url: "https://cyber.digitaladapt.com/motd.php"
+  url: "/motd.php"
 #  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
 #  title: "Demo !"
 #  icon: "fa fa-grin"
@@ -141,12 +141,12 @@ services:
         tag: "landing"
         url: "https://www.thedataknit.com/"
   - name: "DigitalAdapt"
-    logo: "https://www.digitaladapt.com/favicon.ico"
+    logo: "https://digitaladapt.com/favicon.ico"
     items:
       - name: "DigitalAdapt Website"
         subtitle: "Portfolio, CV, Resume"
         tag: "portfolio"
-        url: "https://www.digitaladapt.com/"
+        url: "https://digitaladapt.com/"
       - name: "Sif DNS Instance"
         subtitle: "AdGuardHome"
         tag: "dns"
